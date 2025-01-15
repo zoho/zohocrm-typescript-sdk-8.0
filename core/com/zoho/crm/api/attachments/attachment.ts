@@ -9,6 +9,7 @@ class Attachment implements Model{
 	private createdBy: MinifiedUser;
 	private parentId: ParentId;
 	private sharingPermission: string;
+	private recordStatusS: string;
 	private attachmentType: number;
 	private id: bigint;
 	private modifiedTime: Date;
@@ -21,6 +22,10 @@ class Attachment implements Model{
 	private seModule: string;
 	private state: string;
 	private linkUrl: string;
+	private attachmentSourceS: string;
+	private fileIdS: string;
+	private fieldStates: string;
+	private ziaVisions: string;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the owner
@@ -114,6 +119,25 @@ class Attachment implements Model{
 	public setSharingPermission(sharingPermission: string): void	{
 		this.sharingPermission = sharingPermission;
 		this.keyModified.set("$sharing_permission", 1);
+
+	}
+
+	/**
+	 * The method to get the recordStatusS
+	 * @returns A String representing the recordStatusS
+	 */
+	public getRecordStatusS(): string	{
+		return this.recordStatusS;
+
+	}
+
+	/**
+	 * The method to set the value to recordStatusS
+	 * @param recordStatusS A String representing the recordStatusS
+	 */
+	public setRecordStatusS(recordStatusS: string): void	{
+		this.recordStatusS = recordStatusS;
+		this.keyModified.set("Record_Status__s", 1);
 
 	}
 
@@ -342,6 +366,82 @@ class Attachment implements Model{
 	public setLinkUrl(linkUrl: string): void	{
 		this.linkUrl = linkUrl;
 		this.keyModified.set("$link_url", 1);
+
+	}
+
+	/**
+	 * The method to get the attachmentSourceS
+	 * @returns A String representing the attachmentSourceS
+	 */
+	public getAttachmentSourceS(): string	{
+		return this.attachmentSourceS;
+
+	}
+
+	/**
+	 * The method to set the value to attachmentSourceS
+	 * @param attachmentSourceS A String representing the attachmentSourceS
+	 */
+	public setAttachmentSourceS(attachmentSourceS: string): void	{
+		this.attachmentSourceS = attachmentSourceS;
+		this.keyModified.set("Attachment_Source__s", 1);
+
+	}
+
+	/**
+	 * The method to get the fileIdS
+	 * @returns A String representing the fileIdS
+	 */
+	public getFileIdS(): string	{
+		return this.fileIdS;
+
+	}
+
+	/**
+	 * The method to set the value to fileIdS
+	 * @param fileIdS A String representing the fileIdS
+	 */
+	public setFileIdS(fileIdS: string): void	{
+		this.fileIdS = fileIdS;
+		this.keyModified.set("File_Id__s", 1);
+
+	}
+
+	/**
+	 * The method to get the fieldStates
+	 * @returns A String representing the fieldStates
+	 */
+	public getFieldStates(): string	{
+		return this.fieldStates;
+
+	}
+
+	/**
+	 * The method to set the value to fieldStates
+	 * @param fieldStates A String representing the fieldStates
+	 */
+	public setFieldStates(fieldStates: string): void	{
+		this.fieldStates = fieldStates;
+		this.keyModified.set("$field_states", 1);
+
+	}
+
+	/**
+	 * The method to get the ziaVisions
+	 * @returns A String representing the ziaVisions
+	 */
+	public getZiaVisions(): string	{
+		return this.ziaVisions;
+
+	}
+
+	/**
+	 * The method to set the value to ziaVisions
+	 * @param ziaVisions A String representing the ziaVisions
+	 */
+	public setZiaVisions(ziaVisions: string): void	{
+		this.ziaVisions = ziaVisions;
+		this.keyModified.set("$zia_visions", 1);
 
 	}
 

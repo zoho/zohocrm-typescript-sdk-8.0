@@ -36,6 +36,7 @@ class DataCenter {
         const CNDataCenter = (await import("./cn_data_center")).CNDataCenter;
         const AUDataCenter = (await import("./au_data_center")).AUDataCenter;
         const CADataCenter = (await import("./ca_data_center")).CADataCenter;
+        const SADataCenter = (await import("./sa_data_center")).SADataCenter;
         const Constants = (await import("../../utils/util/constants")).Constants;
 
         if(Constants.US_DATACENTER.includes(config)) {
@@ -100,6 +101,15 @@ class DataCenter {
                 return CADataCenter.DEVELOPER();
             }
             return CADataCenter.PRODUCTION();
+        }
+        else if(Constants.SA_DATACENTER.includes(config)) {
+            if (config.includes(Constants.SANDBOX)) {
+                return SADataCenter.SANDBOX();
+            } 
+            else if (config.includes(Constants.DEVELOPER)) {
+                return SADataCenter.DEVELOPER();
+            }
+            return SADataCenter.PRODUCTION();
         }
         return null;
     }

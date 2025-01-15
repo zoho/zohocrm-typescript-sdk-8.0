@@ -384,7 +384,8 @@ export class Constants {
     public static IN_DATACENTER = ["https://www.zohoapis.in", "https://sandbox.zohoapis.in", "https://developer.zohoapis.in", "https://accounts.zoho.in/oauth/v2/token","in"];
     public static JP_DATACENTER = ["https://www.zohoapis.jp", "https://sandbox.zohoapis.jp", "https://developer.zohoapis.jp", "https://accounts.zoho.jp/oauth/v2/token","jp"];
     public static US_DATACENTER = ["https://www.zohoapis.com", "https://sandbox.zohoapis.com", "https://developer.zohoapis.com", "https://accounts.zoho.com/oauth/v2/token","us"];
-    public static CA_DATACENTER = ["https://www.zohoapis.ca", "https://sandbox.zohoapis.ca", "https://developer.zohoapis.ca", "https://accounts.zoho.ca/oauth/v2/token","ca"];
+    public static CA_DATACENTER = ["https://www.zohoapis.ca", "https://sandbox.zohoapis.ca", "https://developer.zohoapis.ca", "https://accounts.zohocloud.ca/oauth/v2/token", "ca"];
+    public static SA_DATACENTER = ["https://www.zohoapis.sa", "https://sandbox.zohoapis.sa", "https://developer.zohoapis.sa", "https://accounts.zoho.sa/oauth/v2/token", "sa"]
     public static ENVIRONMENT_ERROR = "The given DataCenter config not valid. Please check the domain URL";
     public static ENVIRONMENT_ERROR_1 = "ENVIRONMENT_ERROR";
     public static DATACENTER_ERROR = "DATACENTER_ERROR";
@@ -397,6 +398,9 @@ export class Constants {
     public static LOCALTIME_NAMESPACE = "LocalTime";
     public static TIME_RANGE_NAMESPACE = "core/com/zoho/crm/api/record/time_range";
 	public static SUB_TYPE = "sub_type";
+    public static BODY = "body";
+    public static FUNCTIONS = "v8/functions";
+    public static FUNCTIONS_PATH = "/actions/execute";
     public static CURRENTUSER = "CurrentUser";
     public static INVENTORYTEMPLATE = "inventorytemplate";
     public static TEMPLATE = "core/com/zoho/crm/api/send_mail/template";

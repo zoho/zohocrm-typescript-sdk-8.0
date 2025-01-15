@@ -4,23 +4,23 @@ import {Model} from "../../../../../../utils/util/model";
 
 class ResponseWrapper implements Model, ResponseHandler{
 
-	private conversionoptions: ConversionOptions;
+	private conversionOptions: ConversionOptions;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
-	 * The method to get the conversionoptions
+	 * The method to get the conversionOptions
 	 * @returns An instance of ConversionOptions
 	 */
-	public getConversionoptions(): ConversionOptions	{
-		return this.conversionoptions;
+	public getConversionOptions(): ConversionOptions	{
+		return this.conversionOptions;
 
 	}
 
 	/**
-	 * The method to set the value to conversionoptions
-	 * @param conversionoptions An instance of ConversionOptions
+	 * The method to set the value to conversionOptions
+	 * @param conversionOptions An instance of ConversionOptions
 	 */
-	public setConversionoptions(conversionoptions: ConversionOptions): void	{
-		this.conversionoptions = conversionoptions;
+	public setConversionOptions(conversionOptions: ConversionOptions): void	{
+		this.conversionOptions = conversionOptions;
 		this.keyModified.set("__conversion_options", 1);
 
 	}

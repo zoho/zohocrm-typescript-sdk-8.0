@@ -25,6 +25,7 @@ import {Textarea} from "../fields/textarea";
 import {Tooltip} from "../fields/tooltip";
 import {Unique} from "../fields/unique";
 import {ViewType} from "../fields/view_type";
+import {Picklist} from "../global_picklists/picklist";
 import {Delete1} from "./delete1";
 import {StaticValues} from "./static_values";
 import {MinifiedModule} from "../modules/minified_module";
@@ -112,8 +113,8 @@ class SectionField extends Fields implements Model{
 	protected associationDetails: AssociationDetails;
 	protected additionalColumn: string;
 	protected fieldLabel: string;
-	protected globalPicklist: any;
-	protected updateexistingrecords: boolean;
+	protected globalPicklist: Picklist;
+	protected updateExistingRecords: boolean;
 	protected numberSeparator: boolean;
 	protected textarea: Textarea;
 	protected keyModified: Map<string, number> = new Map<string, number>();
@@ -1620,38 +1621,38 @@ class SectionField extends Fields implements Model{
 
 	/**
 	 * The method to get the globalPicklist
-	 * @returns An Object representing the globalPicklist
+	 * @returns An instance of Picklist
 	 */
-	public getGlobalPicklist(): any	{
+	public getGlobalPicklist(): Picklist	{
 		return this.globalPicklist;
 
 	}
 
 	/**
 	 * The method to set the value to globalPicklist
-	 * @param globalPicklist An Object representing the globalPicklist
+	 * @param globalPicklist An instance of Picklist
 	 */
-	public setGlobalPicklist(globalPicklist: any): void	{
+	public setGlobalPicklist(globalPicklist: Picklist): void	{
 		this.globalPicklist = globalPicklist;
 		this.keyModified.set("global_picklist", 1);
 
 	}
 
 	/**
-	 * The method to get the updateexistingrecords
-	 * @returns A Boolean representing the updateexistingrecords
+	 * The method to get the updateExistingRecords
+	 * @returns A Boolean representing the updateExistingRecords
 	 */
-	public getUpdateexistingrecords(): boolean	{
-		return this.updateexistingrecords;
+	public getUpdateExistingRecords(): boolean	{
+		return this.updateExistingRecords;
 
 	}
 
 	/**
-	 * The method to set the value to updateexistingrecords
-	 * @param updateexistingrecords A Boolean representing the updateexistingrecords
+	 * The method to set the value to updateExistingRecords
+	 * @param updateExistingRecords A Boolean representing the updateExistingRecords
 	 */
-	public setUpdateexistingrecords(updateexistingrecords: boolean): void	{
-		this.updateexistingrecords = updateexistingrecords;
+	public setUpdateExistingRecords(updateExistingRecords: boolean): void	{
+		this.updateExistingRecords = updateExistingRecords;
 		this.keyModified.set("_update_existing_records", 1);
 
 	}

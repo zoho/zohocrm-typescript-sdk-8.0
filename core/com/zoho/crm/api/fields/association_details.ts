@@ -1,25 +1,25 @@
-import {MinifiedModule} from "../modules/minified_module";
+import {LookupField} from "./lookup_field";
 import {Model} from "../../../../../../utils/util/model";
 
 class AssociationDetails implements Model{
 
-	private relatedField: MinifiedModule;
-	private lookupField: MinifiedModule;
+	private relatedField: LookupField;
+	private lookupField: LookupField;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the relatedField
-	 * @returns An instance of MinifiedModule
+	 * @returns An instance of LookupField
 	 */
-	public getRelatedField(): MinifiedModule	{
+	public getRelatedField(): LookupField	{
 		return this.relatedField;
 
 	}
 
 	/**
 	 * The method to set the value to relatedField
-	 * @param relatedField An instance of MinifiedModule
+	 * @param relatedField An instance of LookupField
 	 */
-	public setRelatedField(relatedField: MinifiedModule): void	{
+	public setRelatedField(relatedField: LookupField): void	{
 		this.relatedField = relatedField;
 		this.keyModified.set("related_field", 1);
 
@@ -27,18 +27,18 @@ class AssociationDetails implements Model{
 
 	/**
 	 * The method to get the lookupField
-	 * @returns An instance of MinifiedModule
+	 * @returns An instance of LookupField
 	 */
-	public getLookupField(): MinifiedModule	{
+	public getLookupField(): LookupField	{
 		return this.lookupField;
 
 	}
 
 	/**
 	 * The method to set the value to lookupField
-	 * @param lookupField An instance of MinifiedModule
+	 * @param lookupField An instance of LookupField
 	 */
-	public setLookupField(lookupField: MinifiedModule): void	{
+	public setLookupField(lookupField: LookupField): void	{
 		this.lookupField = lookupField;
 		this.keyModified.set("lookup_field", 1);
 

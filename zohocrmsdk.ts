@@ -29,6 +29,7 @@ import * as Apis from "./core/com/zoho/crm/api/apis/import_apis";
 import * as Functions from "./core/com/zoho/crm/api/functions/import_functions";
 import * as MassChangeOwner from "./core/com/zoho/crm/api/mass_change_owner/import_mass_change_owner";
 import * as DuplicateCheckPreference from "./core/com/zoho/crm/api/duplicate_check_preference/import_duplicate_check_preference";
+import * as SignalsNotifications from "./core/com/zoho/crm/api/signals_notifications/import_signals_notifications";
 import * as PrivacyConfigurableApps from "./core/com/zoho/crm/api/privacy_configurable_apps/import_privacy_configurable_apps";
 import * as MassConvert from "./core/com/zoho/crm/api/mass_convert/import_mass_convert";
 import * as CallPreferences from "./core/com/zoho/crm/api/call_preferences/import_call_preferences";
@@ -45,6 +46,7 @@ import * as Holidays from "./core/com/zoho/crm/api/holidays/import_holidays";
 import * as Wizards from "./core/com/zoho/crm/api/wizards/import_wizards";
 import * as Currencies from "./core/com/zoho/crm/api/currencies/import_currencies";
 import * as ZiaAllowedFieldMappings from "./core/com/zoho/crm/api/zia_allowed_field_mappings/import_zia_allowed_field_mappings";
+import * as Signals from "./core/com/zoho/crm/api/signals/import_signals";
 import * as EmailCompose from "./core/com/zoho/crm/api/email_compose/import_email_compose";
 import * as Notes from "./core/com/zoho/crm/api/notes/import_notes";
 import * as InventoryMassConvert from "./core/com/zoho/crm/api/inventory_mass_convert/import_inventory_mass_convert";
@@ -207,6 +209,7 @@ class zohocrmsdk {
 	Functions;
 	MassChangeOwner;
 	DuplicateCheckPreference;
+	SignalsNotifications;
 	PrivacyConfigurableApps;
 	MassConvert;
 	CallPreferences;
@@ -223,6 +226,7 @@ class zohocrmsdk {
 	Wizards;
 	Currencies;
 	ZiaAllowedFieldMappings;
+	Signals;
 	EmailCompose;
 	Notes;
 	InventoryMassConvert;
@@ -377,6 +381,7 @@ class zohocrmsdk {
 	this.Functions = Functions;
 	this.MassChangeOwner = MassChangeOwner;
 	this.DuplicateCheckPreference = DuplicateCheckPreference;
+	this.SignalsNotifications = SignalsNotifications;
 	this.PrivacyConfigurableApps = PrivacyConfigurableApps;
 	this.MassConvert = MassConvert;
 	this.CallPreferences = CallPreferences;
@@ -393,6 +398,7 @@ class zohocrmsdk {
 	this.Wizards = Wizards;
 	this.Currencies = Currencies;
 	this.ZiaAllowedFieldMappings = ZiaAllowedFieldMappings;
+	this.Signals = Signals;
 	this.EmailCompose = EmailCompose;
 	this.Notes = Notes;
 	this.InventoryMassConvert = InventoryMassConvert;
@@ -551,6 +557,7 @@ export {
 	Functions,
 	MassChangeOwner,
 	DuplicateCheckPreference,
+	SignalsNotifications,
 	PrivacyConfigurableApps,
 	MassConvert,
 	CallPreferences,
@@ -567,6 +574,7 @@ export {
 	Wizards,
 	Currencies,
 	ZiaAllowedFieldMappings,
+	Signals,
 	EmailCompose,
 	Notes,
 	InventoryMassConvert,

@@ -1,3 +1,4 @@
+import {Module} from "./module";
 import {PickListValues} from "./pick_list_values";
 import {MinifiedUser} from "../users/minified_user";
 import {Model} from "../../../../../../utils/util/model";
@@ -16,6 +17,9 @@ class Picklist implements Model{
 	private presence: boolean;
 	private pickListValuesSortedLexically: boolean;
 	private pickListValues: Array<PickListValues>;
+	private associatedFieldsCount: number;
+	private usedInModules: Array<Module>;
+	private customizable: boolean;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the displayLabel
@@ -242,6 +246,63 @@ class Picklist implements Model{
 	public setPickListValues(pickListValues: Array<PickListValues>): void	{
 		this.pickListValues = pickListValues;
 		this.keyModified.set("pick_list_values", 1);
+
+	}
+
+	/**
+	 * The method to get the associatedFieldsCount
+	 * @returns A number representing the associatedFieldsCount
+	 */
+	public getAssociatedFieldsCount(): number	{
+		return this.associatedFieldsCount;
+
+	}
+
+	/**
+	 * The method to set the value to associatedFieldsCount
+	 * @param associatedFieldsCount A number representing the associatedFieldsCount
+	 */
+	public setAssociatedFieldsCount(associatedFieldsCount: number): void	{
+		this.associatedFieldsCount = associatedFieldsCount;
+		this.keyModified.set("associated_fields_count", 1);
+
+	}
+
+	/**
+	 * The method to get the usedInModules
+	 * @returns An Array representing the usedInModules
+	 */
+	public getUsedInModules(): Array<Module>	{
+		return this.usedInModules;
+
+	}
+
+	/**
+	 * The method to set the value to usedInModules
+	 * @param usedInModules An Array representing the usedInModules
+	 */
+	public setUsedInModules(usedInModules: Array<Module>): void	{
+		this.usedInModules = usedInModules;
+		this.keyModified.set("used_in_modules", 1);
+
+	}
+
+	/**
+	 * The method to get the customizable
+	 * @returns A Boolean representing the customizable
+	 */
+	public getCustomizable(): boolean	{
+		return this.customizable;
+
+	}
+
+	/**
+	 * The method to set the value to customizable
+	 * @param customizable A Boolean representing the customizable
+	 */
+	public setCustomizable(customizable: boolean): void	{
+		this.customizable = customizable;
+		this.keyModified.set("customizable", 1);
 
 	}
 

@@ -3,23 +3,23 @@ import {Model} from "../../../../../../utils/util/model";
 
 class ActionWrapper implements Model{
 
-	private emaildrafts: Array<ActionResponse>;
+	private emailDrafts: Array<ActionResponse>;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
-	 * The method to get the emaildrafts
-	 * @returns An Array representing the emaildrafts
+	 * The method to get the emailDrafts
+	 * @returns An Array representing the emailDrafts
 	 */
-	public getEmaildrafts(): Array<ActionResponse>	{
-		return this.emaildrafts;
+	public getEmailDrafts(): Array<ActionResponse>	{
+		return this.emailDrafts;
 
 	}
 
 	/**
-	 * The method to set the value to emaildrafts
-	 * @param emaildrafts An Array representing the emaildrafts
+	 * The method to set the value to emailDrafts
+	 * @param emailDrafts An Array representing the emailDrafts
 	 */
-	public setEmaildrafts(emaildrafts: Array<ActionResponse>): void	{
-		this.emaildrafts = emaildrafts;
+	public setEmailDrafts(emailDrafts: Array<ActionResponse>): void	{
+		this.emailDrafts = emailDrafts;
 		this.keyModified.set("__email_drafts", 1);
 
 	}

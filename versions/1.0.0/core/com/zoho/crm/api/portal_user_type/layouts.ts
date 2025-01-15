@@ -6,7 +6,7 @@ class Layouts implements Model{
 	private displayLabel: string;
 	private name: string;
 	private id: bigint;
-	private defaultview: Views;
+	private defaultView: Views;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the displayLabel
@@ -66,20 +66,20 @@ class Layouts implements Model{
 	}
 
 	/**
-	 * The method to get the defaultview
+	 * The method to get the defaultView
 	 * @returns An instance of Views
 	 */
-	public getDefaultview(): Views	{
-		return this.defaultview;
+	public getDefaultView(): Views	{
+		return this.defaultView;
 
 	}
 
 	/**
-	 * The method to set the value to defaultview
-	 * @param defaultview An instance of Views
+	 * The method to set the value to defaultView
+	 * @param defaultView An instance of Views
 	 */
-	public setDefaultview(defaultview: Views): void	{
-		this.defaultview = defaultview;
+	public setDefaultView(defaultView: Views): void	{
+		this.defaultView = defaultView;
 		this.keyModified.set("_default_view", 1);
 
 	}

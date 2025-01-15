@@ -4,23 +4,23 @@ import {Model} from "../../../../../../utils/util/model";
 
 class ResponseWrapper implements Model, ResponseHandler{
 
-	private emailssharingdetails: Array<EmailSharings>;
+	private emailsSharingDetails: Array<EmailSharings>;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
-	 * The method to get the emailssharingdetails
-	 * @returns An Array representing the emailssharingdetails
+	 * The method to get the emailsSharingDetails
+	 * @returns An Array representing the emailsSharingDetails
 	 */
-	public getEmailssharingdetails(): Array<EmailSharings>	{
-		return this.emailssharingdetails;
+	public getEmailsSharingDetails(): Array<EmailSharings>	{
+		return this.emailsSharingDetails;
 
 	}
 
 	/**
-	 * The method to set the value to emailssharingdetails
-	 * @param emailssharingdetails An Array representing the emailssharingdetails
+	 * The method to set the value to emailsSharingDetails
+	 * @param emailsSharingDetails An Array representing the emailsSharingDetails
 	 */
-	public setEmailssharingdetails(emailssharingdetails: Array<EmailSharings>): void	{
-		this.emailssharingdetails = emailssharingdetails;
+	public setEmailsSharingDetails(emailsSharingDetails: Array<EmailSharings>): void	{
+		this.emailsSharingDetails = emailsSharingDetails;
 		this.keyModified.set("__emails_sharing_details", 1);
 
 	}

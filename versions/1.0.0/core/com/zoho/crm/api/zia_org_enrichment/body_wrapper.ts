@@ -3,23 +3,23 @@ import {Model} from "../../../../../../utils/util/model";
 
 class BodyWrapper implements Model{
 
-	private ziaorgenrichment: Array<ZiaOrgEnrichment>;
+	private ziaOrgEnrichment: Array<ZiaOrgEnrichment>;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
-	 * The method to get the ziaorgenrichment
-	 * @returns An Array representing the ziaorgenrichment
+	 * The method to get the ziaOrgEnrichment
+	 * @returns An Array representing the ziaOrgEnrichment
 	 */
-	public getZiaorgenrichment(): Array<ZiaOrgEnrichment>	{
-		return this.ziaorgenrichment;
+	public getZiaOrgEnrichment(): Array<ZiaOrgEnrichment>	{
+		return this.ziaOrgEnrichment;
 
 	}
 
 	/**
-	 * The method to set the value to ziaorgenrichment
-	 * @param ziaorgenrichment An Array representing the ziaorgenrichment
+	 * The method to set the value to ziaOrgEnrichment
+	 * @param ziaOrgEnrichment An Array representing the ziaOrgEnrichment
 	 */
-	public setZiaorgenrichment(ziaorgenrichment: Array<ZiaOrgEnrichment>): void	{
-		this.ziaorgenrichment = ziaorgenrichment;
+	public setZiaOrgEnrichment(ziaOrgEnrichment: Array<ZiaOrgEnrichment>): void	{
+		this.ziaOrgEnrichment = ziaOrgEnrichment;
 		this.keyModified.set("__zia_org_enrichment", 1);
 
 	}

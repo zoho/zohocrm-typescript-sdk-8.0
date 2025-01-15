@@ -78,6 +78,7 @@ export class FileStore implements TokenStore {
             let oauthToken = token;
             var csvReader = fs.readFileSync(this.filePath, 'utf-8').toString().split("\n");
             let isRowPresent = false;
+            csvReader = csvReader.filter(line => line.trim() !== "");
             for (var index = 1; index < csvReader.length; index++) {
                 var allcontents = csvReader[index];
                 let nextRecord = allcontents.split(",");
@@ -110,9 +111,11 @@ export class FileStore implements TokenStore {
                     oauthToken.setId(newID);
                 }
                 csvReader.push((await this.setToken(oauthToken)).join(","))
+                csvReader = csvReader.filter(line => line.trim() !== "");
                 fs.writeFileSync(this.filePath, csvReader.join("\n"));
             }
             if (isRowPresent) {
+                csvReader = csvReader.filter(line => line.trim() !== "");
                 fs.writeFileSync(this.filePath, csvReader.join("\n"));
             }
         } catch (err) {
@@ -159,6 +162,7 @@ export class FileStore implements TokenStore {
         try {
             var tokens = [];
             var array = fs.readFileSync(this.filePath,'utf-8').toString().split("\n");
+            array = array.filter(line => line.trim() !== "");
             for (var i = 1; i < array.length; i++) {
                 let allContents : string = array[i];
                 if (allContents.length == 0) {
@@ -303,9 +307,9 @@ export class FileStore implements TokenStore {
     async generateID(allcontents : string[]) : Promise<string> {
         let maxValue = 0;
         if (allcontents.length > 1) {
-            for (var i = 1; i < allcontents.length; i++) {
-                let nextRecord = allcontents[i];
-
+            let allContentsArray = allcontents.map(line => line.split(','));
+            for (var i = 1; i < allContentsArray.length; i++) {
+                let nextRecord = allContentsArray[i];
                 if (nextRecord.length > 1 && nextRecord[0] != null && nextRecord[0]) {
                     if (maxValue < parseInt(nextRecord[0])) {
                         maxValue = parseInt(nextRecord[0]);

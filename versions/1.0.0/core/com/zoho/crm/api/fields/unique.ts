@@ -3,6 +3,7 @@ import {Model} from "../../../../../../utils/util/model";
 class Unique implements Model{
 
 	private casesensitive: string;
+	private disable: any;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the casesensitive
@@ -20,6 +21,25 @@ class Unique implements Model{
 	public setCasesensitive(casesensitive: string): void	{
 		this.casesensitive = casesensitive;
 		this.keyModified.set("casesensitive", 1);
+
+	}
+
+	/**
+	 * The method to get the disable
+	 * @returns An Object representing the disable
+	 */
+	public getDisable(): any	{
+		return this.disable;
+
+	}
+
+	/**
+	 * The method to set the value to disable
+	 * @param disable An Object representing the disable
+	 */
+	public setDisable(disable: any): void	{
+		this.disable = disable;
+		this.keyModified.set("_disable", 1);
 
 	}
 

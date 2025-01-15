@@ -7,8 +7,8 @@ class Profiles implements Model{
 	private default1: boolean;
 	private name: string;
 	private id: bigint;
-	private defaultview: DefaultView;
-	private defaultassignmentview: DefaultAssignmentView;
+	private defaultView: DefaultView;
+	private defaultAssignmentView: DefaultAssignmentView;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the default
@@ -68,39 +68,39 @@ class Profiles implements Model{
 	}
 
 	/**
-	 * The method to get the defaultview
+	 * The method to get the defaultView
 	 * @returns An instance of DefaultView
 	 */
-	public getDefaultview(): DefaultView	{
-		return this.defaultview;
+	public getDefaultView(): DefaultView	{
+		return this.defaultView;
 
 	}
 
 	/**
-	 * The method to set the value to defaultview
-	 * @param defaultview An instance of DefaultView
+	 * The method to set the value to defaultView
+	 * @param defaultView An instance of DefaultView
 	 */
-	public setDefaultview(defaultview: DefaultView): void	{
-		this.defaultview = defaultview;
+	public setDefaultView(defaultView: DefaultView): void	{
+		this.defaultView = defaultView;
 		this.keyModified.set("_default_view", 1);
 
 	}
 
 	/**
-	 * The method to get the defaultassignmentview
+	 * The method to get the defaultAssignmentView
 	 * @returns An instance of DefaultAssignmentView
 	 */
-	public getDefaultassignmentview(): DefaultAssignmentView	{
-		return this.defaultassignmentview;
+	public getDefaultAssignmentView(): DefaultAssignmentView	{
+		return this.defaultAssignmentView;
 
 	}
 
 	/**
-	 * The method to set the value to defaultassignmentview
-	 * @param defaultassignmentview An instance of DefaultAssignmentView
+	 * The method to set the value to defaultAssignmentView
+	 * @param defaultAssignmentView An instance of DefaultAssignmentView
 	 */
-	public setDefaultassignmentview(defaultassignmentview: DefaultAssignmentView): void	{
-		this.defaultassignmentview = defaultassignmentview;
+	public setDefaultAssignmentView(defaultAssignmentView: DefaultAssignmentView): void	{
+		this.defaultAssignmentView = defaultAssignmentView;
 		this.keyModified.set("_default_assignment_view", 1);
 
 	}

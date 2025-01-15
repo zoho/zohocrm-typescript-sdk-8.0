@@ -4,23 +4,23 @@ import {Model} from "../../../../../../utils/util/model";
 
 class ActionWrapper implements Model, ActionHandler{
 
-	private ziapeopleenrichment: Array<ActionResponse>;
+	private ziaPeopleEnrichment: Array<ActionResponse>;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
-	 * The method to get the ziapeopleenrichment
-	 * @returns An Array representing the ziapeopleenrichment
+	 * The method to get the ziaPeopleEnrichment
+	 * @returns An Array representing the ziaPeopleEnrichment
 	 */
-	public getZiapeopleenrichment(): Array<ActionResponse>	{
-		return this.ziapeopleenrichment;
+	public getZiaPeopleEnrichment(): Array<ActionResponse>	{
+		return this.ziaPeopleEnrichment;
 
 	}
 
 	/**
-	 * The method to set the value to ziapeopleenrichment
-	 * @param ziapeopleenrichment An Array representing the ziapeopleenrichment
+	 * The method to set the value to ziaPeopleEnrichment
+	 * @param ziaPeopleEnrichment An Array representing the ziaPeopleEnrichment
 	 */
-	public setZiapeopleenrichment(ziapeopleenrichment: Array<ActionResponse>): void	{
-		this.ziapeopleenrichment = ziapeopleenrichment;
+	public setZiaPeopleEnrichment(ziaPeopleEnrichment: Array<ActionResponse>): void	{
+		this.ziaPeopleEnrichment = ziaPeopleEnrichment;
 		this.keyModified.set("__zia_people_enrichment", 1);
 
 	}

@@ -8,6 +8,7 @@ class PickListValues implements Model{
 	private id: bigint;
 	private sequenceNumber: number;
 	private displayValue: string;
+	private referenceValue: string;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the actualValue
@@ -101,6 +102,25 @@ class PickListValues implements Model{
 	public setDisplayValue(displayValue: string): void	{
 		this.displayValue = displayValue;
 		this.keyModified.set("display_value", 1);
+
+	}
+
+	/**
+	 * The method to get the referenceValue
+	 * @returns A String representing the referenceValue
+	 */
+	public getReferenceValue(): string	{
+		return this.referenceValue;
+
+	}
+
+	/**
+	 * The method to set the value to referenceValue
+	 * @param referenceValue A String representing the referenceValue
+	 */
+	public setReferenceValue(referenceValue: string): void	{
+		this.referenceValue = referenceValue;
+		this.keyModified.set("reference_value", 1);
 
 	}
 

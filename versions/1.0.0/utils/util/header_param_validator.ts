@@ -40,6 +40,9 @@ class HeaderParamValidator {
             })).toString();
         }
         let type = Object.prototype.toString.call(value);
+        if (value instanceof Map || value instanceof Array){
+            type = Constants.OBJECT_TYPE
+        }
         return await DatatypeConverter.postConvert(value, type.toLowerCase());
     }
 

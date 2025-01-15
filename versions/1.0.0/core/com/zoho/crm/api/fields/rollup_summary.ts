@@ -1,13 +1,14 @@
 import {Expression} from "./expression";
-import {MinifiedField} from "./minified_field";
+import {MinifiedModule} from "../modules/minified_module";
+import {RelatedList} from "../related_lists/related_list";
 import {Model} from "../../../../../../utils/util/model";
 
 class RollupSummary implements Model{
 
 	private returnType: string;
 	private expression: Expression;
-	private basedOnModule: MinifiedField;
-	private relatedList: MinifiedField;
+	private basedOnModule: MinifiedModule;
+	private relatedList: RelatedList;
 	private rollupBasedOn: string;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
@@ -50,18 +51,18 @@ class RollupSummary implements Model{
 
 	/**
 	 * The method to get the basedOnModule
-	 * @returns An instance of MinifiedField
+	 * @returns An instance of MinifiedModule
 	 */
-	public getBasedOnModule(): MinifiedField	{
+	public getBasedOnModule(): MinifiedModule	{
 		return this.basedOnModule;
 
 	}
 
 	/**
 	 * The method to set the value to basedOnModule
-	 * @param basedOnModule An instance of MinifiedField
+	 * @param basedOnModule An instance of MinifiedModule
 	 */
-	public setBasedOnModule(basedOnModule: MinifiedField): void	{
+	public setBasedOnModule(basedOnModule: MinifiedModule): void	{
 		this.basedOnModule = basedOnModule;
 		this.keyModified.set("based_on_module", 1);
 
@@ -69,18 +70,18 @@ class RollupSummary implements Model{
 
 	/**
 	 * The method to get the relatedList
-	 * @returns An instance of MinifiedField
+	 * @returns An instance of RelatedList
 	 */
-	public getRelatedList(): MinifiedField	{
+	public getRelatedList(): RelatedList	{
 		return this.relatedList;
 
 	}
 
 	/**
 	 * The method to set the value to relatedList
-	 * @param relatedList An instance of MinifiedField
+	 * @param relatedList An instance of RelatedList
 	 */
-	public setRelatedList(relatedList: MinifiedField): void	{
+	public setRelatedList(relatedList: RelatedList): void	{
 		this.relatedList = relatedList;
 		this.keyModified.set("related_list", 1);
 

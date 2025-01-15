@@ -1,5 +1,6 @@
 import {ForecastCategory} from "./forecast_category";
 import {Maps} from "./maps";
+import {Picklist} from "../global_picklists/picklist";
 import {Choice} from "../../../../../../utils/util/choice";
 import {Model} from "../../../../../../utils/util/model";
 
@@ -21,6 +22,7 @@ class PickListValue implements Model{
 	private maps: Array<Maps>;
 	private delete1: boolean;
 	private showValue: boolean;
+	private globalPicklistValue: Picklist;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the colourCode
@@ -323,6 +325,25 @@ class PickListValue implements Model{
 	public setShowValue(showValue: boolean): void	{
 		this.showValue = showValue;
 		this.keyModified.set("show_value", 1);
+
+	}
+
+	/**
+	 * The method to get the globalPicklistValue
+	 * @returns An instance of Picklist
+	 */
+	public getGlobalPicklistValue(): Picklist	{
+		return this.globalPicklistValue;
+
+	}
+
+	/**
+	 * The method to set the value to globalPicklistValue
+	 * @param globalPicklistValue An instance of Picklist
+	 */
+	public setGlobalPicklistValue(globalPicklistValue: Picklist): void	{
+		this.globalPicklistValue = globalPicklistValue;
+		this.keyModified.set("_global_picklist_value", 1);
 
 	}
 

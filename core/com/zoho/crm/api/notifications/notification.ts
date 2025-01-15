@@ -12,7 +12,7 @@ class Notification extends Event implements Model{
 	protected fields: Map<string, any>;
 	protected notifyOnRelatedAction: boolean;
 	protected returnAffectedFieldValues: boolean;
-	protected deleteevents: Choice<boolean>;
+	protected deleteEvents: Choice<boolean>;
 	protected resourceName: string;
 	protected channelExpiry: Date;
 	protected resourceId: bigint;
@@ -153,20 +153,20 @@ class Notification extends Event implements Model{
 	}
 
 	/**
-	 * The method to get the deleteevents
+	 * The method to get the deleteEvents
 	 * @returns An instance of Choice<boolean>
 	 */
-	public getDeleteevents(): Choice<boolean>	{
-		return this.deleteevents;
+	public getDeleteEvents(): Choice<boolean>	{
+		return this.deleteEvents;
 
 	}
 
 	/**
-	 * The method to set the value to deleteevents
-	 * @param deleteevents An instance of Choice<boolean>
+	 * The method to set the value to deleteEvents
+	 * @param deleteEvents An instance of Choice<boolean>
 	 */
-	public setDeleteevents(deleteevents: Choice<boolean>): void	{
-		this.deleteevents = deleteevents;
+	public setDeleteEvents(deleteEvents: Choice<boolean>): void	{
+		this.deleteEvents = deleteEvents;
 		this.keyModified.set("_delete_events", 1);
 
 	}

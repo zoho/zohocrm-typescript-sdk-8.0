@@ -1,11 +1,11 @@
+import {Criteria} from "./criteria";
 import {FunctionParameter} from "./function_parameter";
-import {RollupCriteria} from "./rollup_criteria";
 import {Model} from "../../../../../../utils/util/model";
 
 class Expression implements Model{
 
 	private functionParameters: Array<FunctionParameter>;
-	private criteria: RollupCriteria;
+	private criteria: Criteria;
 	private function1: string;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
@@ -29,18 +29,18 @@ class Expression implements Model{
 
 	/**
 	 * The method to get the criteria
-	 * @returns An instance of RollupCriteria
+	 * @returns An instance of Criteria
 	 */
-	public getCriteria(): RollupCriteria	{
+	public getCriteria(): Criteria	{
 		return this.criteria;
 
 	}
 
 	/**
 	 * The method to set the value to criteria
-	 * @param criteria An instance of RollupCriteria
+	 * @param criteria An instance of Criteria
 	 */
-	public setCriteria(criteria: RollupCriteria): void	{
+	public setCriteria(criteria: Criteria): void	{
 		this.criteria = criteria;
 		this.keyModified.set("criteria", 1);
 

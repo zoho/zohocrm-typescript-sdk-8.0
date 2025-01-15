@@ -45,10 +45,10 @@ export class CADataCenter extends DataCenter {
     }
 
     public getIAMUrl() {
-        return "https://accounts.zoho.ca/oauth/v2/token";
+        return "https://accounts.zohocloud.ca/oauth/v2/token";
     }
 
     public getFileUploadUrl() {
-        return "https://content.zohoapis.ca";
+        return "https://upload.zohocloud.ca"
     }
 }

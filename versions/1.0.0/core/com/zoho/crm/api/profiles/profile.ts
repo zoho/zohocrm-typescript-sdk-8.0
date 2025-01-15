@@ -7,7 +7,7 @@ import {Model} from "../../../../../../utils/util/model";
 
 class Profile implements Model{
 
-	private defaultview: DefaultView;
+	private defaultView: DefaultView;
 	private name: string;
 	private description: string;
 	private id: bigint;
@@ -26,20 +26,20 @@ class Profile implements Model{
 	private createdBy: MinifiedUser;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
-	 * The method to get the defaultview
+	 * The method to get the defaultView
 	 * @returns An instance of DefaultView
 	 */
-	public getDefaultview(): DefaultView	{
-		return this.defaultview;
+	public getDefaultView(): DefaultView	{
+		return this.defaultView;
 
 	}
 
 	/**
-	 * The method to set the value to defaultview
-	 * @param defaultview An instance of DefaultView
+	 * The method to set the value to defaultView
+	 * @param defaultView An instance of DefaultView
 	 */
-	public setDefaultview(defaultview: DefaultView): void	{
-		this.defaultview = defaultview;
+	public setDefaultView(defaultView: DefaultView): void	{
+		this.defaultView = defaultView;
 		this.keyModified.set("_default_view", 1);
 
 	}

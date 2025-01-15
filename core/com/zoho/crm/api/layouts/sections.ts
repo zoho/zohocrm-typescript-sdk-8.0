@@ -1,3 +1,4 @@
+import {ActionsAllowed} from "./actions_allowed";
 import {Delete1} from "./delete1";
 import {Properties} from "./properties";
 import {SectionField} from "./section_field";
@@ -7,6 +8,7 @@ class Sections implements Model{
 
 	private displayLabel: string;
 	private sequenceNumber: number;
+	private actionsAllowed: ActionsAllowed;
 	private issubformsection: boolean;
 	private tabTraversal: string;
 	private apiName: string;
@@ -54,6 +56,25 @@ class Sections implements Model{
 	public setSequenceNumber(sequenceNumber: number): void	{
 		this.sequenceNumber = sequenceNumber;
 		this.keyModified.set("sequence_number", 1);
+
+	}
+
+	/**
+	 * The method to get the actionsAllowed
+	 * @returns An instance of ActionsAllowed
+	 */
+	public getActionsAllowed(): ActionsAllowed	{
+		return this.actionsAllowed;
+
+	}
+
+	/**
+	 * The method to set the value to actionsAllowed
+	 * @param actionsAllowed An instance of ActionsAllowed
+	 */
+	public setActionsAllowed(actionsAllowed: ActionsAllowed): void	{
+		this.actionsAllowed = actionsAllowed;
+		this.keyModified.set("actions_allowed", 1);
 
 	}
 

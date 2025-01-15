@@ -6,6 +6,9 @@ class Info implements Model{
 	private page: number;
 	private count: number;
 	private moreRecords: boolean;
+	private nextPageToken: string;
+	private pageTokenExpiry: Date;
+	private previousPageToken: string;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the perPage
@@ -80,6 +83,63 @@ class Info implements Model{
 	public setMoreRecords(moreRecords: boolean): void	{
 		this.moreRecords = moreRecords;
 		this.keyModified.set("more_records", 1);
+
+	}
+
+	/**
+	 * The method to get the nextPageToken
+	 * @returns A String representing the nextPageToken
+	 */
+	public getNextPageToken(): string	{
+		return this.nextPageToken;
+
+	}
+
+	/**
+	 * The method to set the value to nextPageToken
+	 * @param nextPageToken A String representing the nextPageToken
+	 */
+	public setNextPageToken(nextPageToken: string): void	{
+		this.nextPageToken = nextPageToken;
+		this.keyModified.set("next_page_token", 1);
+
+	}
+
+	/**
+	 * The method to get the pageTokenExpiry
+	 * @returns An instance of Date
+	 */
+	public getPageTokenExpiry(): Date	{
+		return this.pageTokenExpiry;
+
+	}
+
+	/**
+	 * The method to set the value to pageTokenExpiry
+	 * @param pageTokenExpiry An instance of Date
+	 */
+	public setPageTokenExpiry(pageTokenExpiry: Date): void	{
+		this.pageTokenExpiry = pageTokenExpiry;
+		this.keyModified.set("page_token_expiry", 1);
+
+	}
+
+	/**
+	 * The method to get the previousPageToken
+	 * @returns A String representing the previousPageToken
+	 */
+	public getPreviousPageToken(): string	{
+		return this.previousPageToken;
+
+	}
+
+	/**
+	 * The method to set the value to previousPageToken
+	 * @param previousPageToken A String representing the previousPageToken
+	 */
+	public setPreviousPageToken(previousPageToken: string): void	{
+		this.previousPageToken = previousPageToken;
+		this.keyModified.set("previous_page_token", 1);
 
 	}
 

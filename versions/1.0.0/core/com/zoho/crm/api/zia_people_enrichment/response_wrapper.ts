@@ -5,24 +5,24 @@ import {Model} from "../../../../../../utils/util/model";
 
 class ResponseWrapper implements Model, ResponseHandler{
 
-	private ziapeopleenrichment: Array<ZiaPeopleEnrichment>;
+	private ziaPeopleEnrichment: Array<ZiaPeopleEnrichment>;
 	private info: Info;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
-	 * The method to get the ziapeopleenrichment
-	 * @returns An Array representing the ziapeopleenrichment
+	 * The method to get the ziaPeopleEnrichment
+	 * @returns An Array representing the ziaPeopleEnrichment
 	 */
-	public getZiapeopleenrichment(): Array<ZiaPeopleEnrichment>	{
-		return this.ziapeopleenrichment;
+	public getZiaPeopleEnrichment(): Array<ZiaPeopleEnrichment>	{
+		return this.ziaPeopleEnrichment;
 
 	}
 
 	/**
-	 * The method to set the value to ziapeopleenrichment
-	 * @param ziapeopleenrichment An Array representing the ziapeopleenrichment
+	 * The method to set the value to ziaPeopleEnrichment
+	 * @param ziaPeopleEnrichment An Array representing the ziaPeopleEnrichment
 	 */
-	public setZiapeopleenrichment(ziapeopleenrichment: Array<ZiaPeopleEnrichment>): void	{
-		this.ziapeopleenrichment = ziapeopleenrichment;
+	public setZiaPeopleEnrichment(ziaPeopleEnrichment: Array<ZiaPeopleEnrichment>): void	{
+		this.ziaPeopleEnrichment = ziaPeopleEnrichment;
 		this.keyModified.set("__zia_people_enrichment", 1);
 
 	}

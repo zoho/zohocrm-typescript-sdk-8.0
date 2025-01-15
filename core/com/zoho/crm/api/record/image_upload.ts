@@ -17,6 +17,7 @@ class ImageUpload implements Model{
 	private createdByS: MinifiedUser;
 	private ownerS: MinifiedUser;
 	private modifiedByS: MinifiedUser;
+	private attachmentSourceS: string;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the previewIdS
@@ -281,6 +282,25 @@ class ImageUpload implements Model{
 	public setModifiedByS(modifiedByS: MinifiedUser): void	{
 		this.modifiedByS = modifiedByS;
 		this.keyModified.set("Modified_By__s", 1);
+
+	}
+
+	/**
+	 * The method to get the attachmentSourceS
+	 * @returns A String representing the attachmentSourceS
+	 */
+	public getAttachmentSourceS(): string	{
+		return this.attachmentSourceS;
+
+	}
+
+	/**
+	 * The method to set the value to attachmentSourceS
+	 * @param attachmentSourceS A String representing the attachmentSourceS
+	 */
+	public setAttachmentSourceS(attachmentSourceS: string): void	{
+		this.attachmentSourceS = attachmentSourceS;
+		this.keyModified.set("Attachment_Source__s", 1);
 
 	}
 

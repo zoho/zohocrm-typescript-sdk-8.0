@@ -4,23 +4,23 @@ import {Model} from "../../../../../../utils/util/model";
 
 class ActionWrapper implements Model, ActionHandler{
 
-	private ziaorgenrichment: Array<ActionResponse>;
+	private ziaOrgEnrichment: Array<ActionResponse>;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
-	 * The method to get the ziaorgenrichment
-	 * @returns An Array representing the ziaorgenrichment
+	 * The method to get the ziaOrgEnrichment
+	 * @returns An Array representing the ziaOrgEnrichment
 	 */
-	public getZiaorgenrichment(): Array<ActionResponse>	{
-		return this.ziaorgenrichment;
+	public getZiaOrgEnrichment(): Array<ActionResponse>	{
+		return this.ziaOrgEnrichment;
 
 	}
 
 	/**
-	 * The method to set the value to ziaorgenrichment
-	 * @param ziaorgenrichment An Array representing the ziaorgenrichment
+	 * The method to set the value to ziaOrgEnrichment
+	 * @param ziaOrgEnrichment An Array representing the ziaOrgEnrichment
 	 */
-	public setZiaorgenrichment(ziaorgenrichment: Array<ActionResponse>): void	{
-		this.ziaorgenrichment = ziaorgenrichment;
+	public setZiaOrgEnrichment(ziaOrgEnrichment: Array<ActionResponse>): void	{
+		this.ziaOrgEnrichment = ziaOrgEnrichment;
 		this.keyModified.set("__zia_org_enrichment", 1);
 
 	}

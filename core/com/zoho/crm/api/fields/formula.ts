@@ -3,7 +3,11 @@ import {Model} from "../../../../../../utils/util/model";
 class Formula implements Model{
 
 	private returnType: string;
+	private assumeDefault: boolean;
 	private expression: string;
+	private dynamic: boolean;
+	private stopComputeConditionally: boolean;
+	private stopComputeExpression: string;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the returnType
@@ -25,6 +29,25 @@ class Formula implements Model{
 	}
 
 	/**
+	 * The method to get the assumeDefault
+	 * @returns A Boolean representing the assumeDefault
+	 */
+	public getAssumeDefault(): boolean	{
+		return this.assumeDefault;
+
+	}
+
+	/**
+	 * The method to set the value to assumeDefault
+	 * @param assumeDefault A Boolean representing the assumeDefault
+	 */
+	public setAssumeDefault(assumeDefault: boolean): void	{
+		this.assumeDefault = assumeDefault;
+		this.keyModified.set("assume_default", 1);
+
+	}
+
+	/**
 	 * The method to get the expression
 	 * @returns A String representing the expression
 	 */
@@ -40,6 +63,63 @@ class Formula implements Model{
 	public setExpression(expression: string): void	{
 		this.expression = expression;
 		this.keyModified.set("expression", 1);
+
+	}
+
+	/**
+	 * The method to get the dynamic
+	 * @returns A Boolean representing the dynamic
+	 */
+	public getDynamic(): boolean	{
+		return this.dynamic;
+
+	}
+
+	/**
+	 * The method to set the value to dynamic
+	 * @param dynamic A Boolean representing the dynamic
+	 */
+	public setDynamic(dynamic: boolean): void	{
+		this.dynamic = dynamic;
+		this.keyModified.set("dynamic", 1);
+
+	}
+
+	/**
+	 * The method to get the stopComputeConditionally
+	 * @returns A Boolean representing the stopComputeConditionally
+	 */
+	public getStopComputeConditionally(): boolean	{
+		return this.stopComputeConditionally;
+
+	}
+
+	/**
+	 * The method to set the value to stopComputeConditionally
+	 * @param stopComputeConditionally A Boolean representing the stopComputeConditionally
+	 */
+	public setStopComputeConditionally(stopComputeConditionally: boolean): void	{
+		this.stopComputeConditionally = stopComputeConditionally;
+		this.keyModified.set("stop_compute_conditionally", 1);
+
+	}
+
+	/**
+	 * The method to get the stopComputeExpression
+	 * @returns A String representing the stopComputeExpression
+	 */
+	public getStopComputeExpression(): string	{
+		return this.stopComputeExpression;
+
+	}
+
+	/**
+	 * The method to set the value to stopComputeExpression
+	 * @param stopComputeExpression A String representing the stopComputeExpression
+	 */
+	public setStopComputeExpression(stopComputeExpression: string): void	{
+		this.stopComputeExpression = stopComputeExpression;
+		this.keyModified.set("stop_compute_expression", 1);
 
 	}
 
