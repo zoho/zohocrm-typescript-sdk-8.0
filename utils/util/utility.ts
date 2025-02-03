@@ -648,6 +648,7 @@ class Utility {
                 if(linkingDetails != null){
                     let linkingModule = linkingDetails.getModule();
                     fieldDetail[Constants.MODULE] = linkingModule.getAPIName();
+                    module = new MinifiedModule();
                     module.setAPIName(linkingModule.getAPIName());
                     module.setId(linkingModule.getId());
                 }
@@ -661,6 +662,7 @@ class Utility {
                 if(linkingDetails != null){
                     let linkingModule = linkingDetails.getModule();
                     fieldDetail[Constants.MODULE] = linkingModule.getAPIName();
+                    module = new MinifiedModule();
                     module.setAPIName(linkingModule.getAPIName());
                     module.setId(linkingModule.getId());
                 }
@@ -669,7 +671,6 @@ class Utility {
         }
         if(apiType.toLowerCase() == Constants.MULTI_MODULE_LOOKUP) {
             fieldDetail[Constants.SKIP_MANDATORY] = true;
-            fieldDetail[Constants.SUBFORM] = true;
         }
         if (Utility.apiTypeVsStructureName.has(apiType)) {
             fieldDetail.structure_name = Utility.apiTypeVsStructureName.get(apiType);
@@ -691,7 +692,7 @@ class Utility {
             if (module1 != null && module1.getAPIName().toLowerCase() != Constants.SE_MODULE) {
                 module.setAPIName(module1.getAPIName());
                 module.setId(module1.getId());
-                fieldDetail.module = module.getAPIName();
+                fieldDetail.module = module1.getAPIName();
                 if (module1.getAPIName().toLowerCase() == Constants.ACCOUNTS && field.getCustomField() != null && !field.getCustomField()) {
                     fieldDetail[Constants.SKIP_MANDATORY] = true;
                 }
@@ -724,7 +725,7 @@ class Utility {
         let fieldAPINamesInteger = ["integer"];
         let fieldAPINamesBoolean = ["boolean"];
         let fieldAPINamesLong = ["long", "bigint"];
-        let fieldAPINamesDouble = ["double", "percent", "lookup", "currency"];
+        let fieldAPINamesDouble = ["double", "percent", "currency"];
         let fieldAPINamesFieldFile = ["fileupload"];
         let fieldAPINamesDateTime = ["datetime", "event_reminder"];
         let fieldAPINamesDate = ["date"];
@@ -787,7 +788,7 @@ class Utility {
         }
         for (let fieldAPIName of fieldAPINamesMultiUserLookUp) {
             Utility.apiTypeVsDataType.set(fieldAPIName, Constants.LIST_NAMESPACE);
-            Utility.apiTypeVsStructureName.set(fieldAPIName, Constants.USER_NAMESPACE);
+            Utility.apiTypeVsStructureName.set(fieldAPIName, Constants.RECORD_NAMESPACE);
         }
         for (let fieldAPIName of fieldAPINamesFieldFile) {
             Utility.apiTypeVsDataType.set(fieldAPIName, Constants.LIST_NAMESPACE);

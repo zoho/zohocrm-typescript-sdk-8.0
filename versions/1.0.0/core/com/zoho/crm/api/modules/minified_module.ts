@@ -6,6 +6,7 @@ class MinifiedModule implements Model{
 	private id: bigint;
 	private moduleName: string;
 	private module: string;
+	private crypt: boolean;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the apiName
@@ -80,6 +81,25 @@ class MinifiedModule implements Model{
 	public setModule(module: string): void	{
 		this.module = module;
 		this.keyModified.set("module", 1);
+
+	}
+
+	/**
+	 * The method to get the crypt
+	 * @returns A Boolean representing the crypt
+	 */
+	public getCrypt(): boolean	{
+		return this.crypt;
+
+	}
+
+	/**
+	 * The method to set the value to crypt
+	 * @param crypt A Boolean representing the crypt
+	 */
+	public setCrypt(crypt: boolean): void	{
+		this.crypt = crypt;
+		this.keyModified.set("crypt", 1);
 
 	}
 
