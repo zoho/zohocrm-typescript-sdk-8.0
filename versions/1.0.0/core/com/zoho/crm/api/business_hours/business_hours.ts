@@ -11,6 +11,7 @@ class BusinessHours implements Model{
 	private sameAsEveryday: boolean;
 	private dailyTiming: Array<string>;
 	private customTiming: Array<BreakHoursCustomTiming>;
+	private timezone: string;
 	private keyModified: Map<string, number> = new Map<string, number>();
 	/**
 	 * The method to get the weekStartsOn
@@ -142,6 +143,25 @@ class BusinessHours implements Model{
 	public setCustomTiming(customTiming: Array<BreakHoursCustomTiming>): void	{
 		this.customTiming = customTiming;
 		this.keyModified.set("custom_timing", 1);
+
+	}
+
+	/**
+	 * The method to get the timezone
+	 * @returns A String representing the timezone
+	 */
+	public getTimezone(): string	{
+		return this.timezone;
+
+	}
+
+	/**
+	 * The method to set the value to timezone
+	 * @param timezone A String representing the timezone
+	 */
+	public setTimezone(timezone: string): void	{
+		this.timezone = timezone;
+		this.keyModified.set("timezone", 1);
 
 	}
 
