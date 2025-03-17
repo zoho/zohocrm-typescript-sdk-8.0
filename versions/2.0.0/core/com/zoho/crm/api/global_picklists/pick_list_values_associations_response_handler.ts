@@ -1,0 +1,7 @@
+interface PickListValuesAssociationsResponseHandler{
+
+}
+export type{
+	PickListValuesAssociationsResponseHandler as MasterModel,
+	PickListValuesAssociationsResponseHandler as PickListValuesAssociationsResponseHandler
+}
