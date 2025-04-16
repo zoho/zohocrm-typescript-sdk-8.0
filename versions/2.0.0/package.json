@@ -1,0 +1,41 @@
+{
+    "name": "@zohocrm/typescript-sdk-8.0",
+    "version": "2.0.0",
+    "description": "TypeScript SDK for Zoho CRM",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zoho/zohocrm-typescript-sdk-8.0"
+    },
+    "files": [
+        "dist"
+    ],
+    "keywords": [
+        "Node",
+        "Zoho",
+        "CRM",
+        "OAuth2",
+        "API",
+        "Typescript",
+        "TS"
+    ],
+    "author": "Zoho CRM API Team (support@zohocrm.com)",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@types/mysql": "^2.15.16",
+        "@types/tunnel": "^0.0.1",
+        "form-data": "^3.0.0",
+        "got": "^11.8.1",
+        "moment-timezone": "0.5.43",
+        "mysql": "^2.18.1",
+        "ts-node": "^9.1.1",
+        "tunnel": "0.0.6",
+        "typescript": "^4.5.2",
+        "winston": "^3.2.1"
+    },
+    "homepage": "https://github.com/zoho/zohocrm-typescript-sdk-8.0#readme",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}
