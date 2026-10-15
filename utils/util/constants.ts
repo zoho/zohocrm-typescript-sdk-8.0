@@ -59,7 +59,7 @@ export class Constants {
     public static REQUEST_METHOD_DELETE = "DELETE";
     public static REQUEST_METHOD_GET = "GET";
     public static ZOHO_SDK = "X-ZOHO-SDK";
-    public static SDK_VERSION = "3.0.0";
+    public static SDK_VERSION = "4.0.0";
     public static MYSQL_HOST = "localhost";
     public static MYSQL_DATABASE_NAME = "zohooauth";
     public static MYSQL_USER_NAME = "root";
