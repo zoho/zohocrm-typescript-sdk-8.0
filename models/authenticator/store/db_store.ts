@@ -5,6 +5,25 @@ import { Constants } from "../../../utils/util/constants";
 import { OAuthToken } from '../oauth_token';
 import { Token } from "../token";
 import { TokenStore } from "./token_store";
+
+/**
+ * Represents a single "column=?" assignment together with the value that must
+ * be bound to its placeholder.
+ */
+export interface TokenInfo {
+    clause: string;
+    value: string | null;
+}
+
+/**
+ * Represents the complete SET clause of an UPDATE statement: the comma joined
+ * list of "column=?" assignments and the ordered values bound to them.
+ */
+export interface TokenAssignments {
+    clause: string;
+    values: Array<string | null>;
+}
+
 /**
  * This class stores the user token details to the MySQL DataBase.
 */
@@ -58,6 +77,7 @@ export class DBStore implements TokenStore {
                 }
             }
             query += " limit 1;";
+            let queryParams: Array<any> = param !== undefined && param !== null ? [param] : [];
             try {
                 var connection = await this.getConnection();
                 var that = this;
@@ -66,7 +86,7 @@ export class DBStore implements TokenStore {
                         if (err) {
                             return reject(err);
                         }
-                        connection.query(query, [param], async function (err, result) {
+                        connection.query(query, queryParams, async function (err, result) {
                             connection.end();
                             if (err) {
                                 return reject(err);
@@ -95,29 +115,34 @@ export class DBStore implements TokenStore {
     async saveToken(token : OAuthToken) : Promise<void>{
         let oauthToken = token;
         let param: any = null;
+        let assignments = await this.setToken(oauthToken);
         var query = "update " + this.tableName + " set ";
         if (oauthToken.getUserSignature() != null) {
             let name = oauthToken.getUserSignature()?.getName();
             if (name != null && name.length > 0) {
-                query += await this.setToken(oauthToken) + " where user_name = ?";
+                query += assignments.clause + " where user_name = ?";
                 param = name;
             }
         }
         else if (oauthToken.getAccessToken() != null && oauthToken.getAccessToken()!.length > 0 && oauthToken.getClientId() == null && oauthToken.getClientSecret() == null) {
-            query += await this.setToken(oauthToken) + " where access_token = ?";
+            query += assignments.clause + " where access_token = ?";
             param = oauthToken.getAccessToken();
         }
         else if (((oauthToken && oauthToken.getRefreshToken() != null && oauthToken.getRefreshToken()!.length > 0) || oauthToken.getGrantToken() != null && oauthToken.getGrantToken()!.length > 0) && oauthToken.getClientId() != null && oauthToken.getClientSecret() != null) {
             if (oauthToken.getGrantToken() != null && oauthToken.getGrantToken()!.length > 0) {
-                query += await this.setToken(oauthToken) + " where grant_token = ?";
+                query += assignments.clause + " where grant_token = ?";
                 param = oauthToken.getGrantToken();
             }
             else if (oauthToken.getRefreshToken() != null && oauthToken.getRefreshToken()!.length > 0) {
-                query += await this.setToken(oauthToken) + " where refresh_token = ?";
+                query += assignments.clause + " where refresh_token = ?";
                 param = oauthToken.getRefreshToken();
             }
         }
         query += " limit 1;";
+        let queryParams: Array<any> = assignments.values.slice();
+        if (param !== undefined && param !== null) {
+            queryParams.push(param);
+        }
         try {
             let that = this;
             let connection = await this.getConnection();
@@ -126,7 +151,7 @@ export class DBStore implements TokenStore {
                     if (err) {
                         return reject(err);
                     }
-                    connection.query(query, [param], async function (err, result) {
+                    connection.query(query, queryParams, async function (err, result) {
                         if (err) {
                             connection.end();
                             return reject(err);
@@ -354,44 +379,55 @@ export class DBStore implements TokenStore {
         }
     }
 
-    async setToken(oauthToken: OAuthToken) : Promise<string>{
-        let query = [];
+    async setToken(oauthToken: OAuthToken) : Promise<TokenAssignments>{
+        let clauses: Array<string> = [];
+        let values: Array<string | null> = [];
+        let appendTokenInfo = (key: string, value: string | null) => {
+            let tokenInfo = this.setTokenInfo(key, value);
+            clauses.push(tokenInfo.clause);
+            values.push(tokenInfo.value);
+        };
         if (oauthToken.getUserSignature() != null) {
             let name = oauthToken.getUserSignature()?.getName();
             if (name != null && name.length > 0) {
-                query.push(this.setTokenInfo(Constants.USER_NAME, name));
+                appendTokenInfo(Constants.USER_NAME, name);
             }
         }
         if (oauthToken.getClientId() != null) {
-            query.push(this.setTokenInfo(Constants.CLIENT_ID, oauthToken.getClientId()));
+            appendTokenInfo(Constants.CLIENT_ID, oauthToken.getClientId());
         }
         if (oauthToken.getClientSecret() != null) {
-            query.push(this.setTokenInfo(Constants.CLIENT_SECRET, oauthToken.getClientSecret()));
+            appendTokenInfo(Constants.CLIENT_SECRET, oauthToken.getClientSecret());
         }
         if (oauthToken.getRefreshToken() != null) {
-            query.push(this.setTokenInfo(Constants.REFRESH_TOKEN, oauthToken.getRefreshToken()));
+            appendTokenInfo(Constants.REFRESH_TOKEN, oauthToken.getRefreshToken());
         }
         if (oauthToken.getAccessToken() != null) {
-            query.push(this.setTokenInfo(Constants.ACCESS_TOKEN, oauthToken.getAccessToken()));
+            appendTokenInfo(Constants.ACCESS_TOKEN, oauthToken.getAccessToken());
         }
         if (oauthToken.getGrantToken() != null) {
-            query.push(this.setTokenInfo(Constants.GRANT_TOKEN, oauthToken.getGrantToken()));
+            appendTokenInfo(Constants.GRANT_TOKEN, oauthToken.getGrantToken());
         }
         if (oauthToken.getExpiresIn() != null) {
-            query.push(this.setTokenInfo(Constants.EXPIRY_TIME, oauthToken.getExpiresIn()));
+            appendTokenInfo(Constants.EXPIRY_TIME, oauthToken.getExpiresIn());
         }
         if (oauthToken.getRedirectURL() != null) {
-            query.push(this.setTokenInfo(Constants.REDIRECT_URL, oauthToken.getRedirectURL()));
+            appendTokenInfo(Constants.REDIRECT_URL, oauthToken.getRedirectURL());
         }
         if(oauthToken.getAPIDomain() != null)
         {
-            query.push(this.setTokenInfo(Constants.API_DOMAIN, oauthToken.getAPIDomain()));
+            appendTokenInfo(Constants.API_DOMAIN, oauthToken.getAPIDomain());
         }
-        return query.join(",");
+        return { clause: clauses.join(","), values: values };
     }
 
-    setTokenInfo(key : string , value : string | null ) : string {
-        return key + "='" + value + "'";
+    /**
+     * Builds a parameterised assignment. The value is never interpolated into
+     * the SQL text, so identities containing quotes or comment markers cannot
+     * alter the statement structure.
+     */
+    setTokenInfo(key : string , value : string | null ) : TokenInfo {
+        return { clause: key + "=?", value: value };
     }
 
     async generateId() : Promise<string> {

@@ -103,9 +103,8 @@ export class Initializer {
 	 * @returns A Initializer class instance representing the SDK configuration details.
 	 */
 	public static async getInitializer(): Promise<Initializer> {
-		if (Array.from(Initializer.LOCAL.keys()).length > 0) {
-			let initializer = new Initializer();
-			let encodedKey = await initializer.getEncodedKey();
+		if (Initializer.initializer != null && Array.from(Initializer.LOCAL.keys()).length > 0) {
+			let encodedKey = await Initializer.initializer.getEncodedKey();
 			if (Initializer.LOCAL.has(encodedKey)) {
 				let value = Initializer.LOCAL.get(encodedKey);
 				if (value !== undefined) {
@@ -135,7 +134,9 @@ export class Initializer {
 			await token.generateToken();
 		}
 		initializer._token = token;
-		Initializer.LOCAL.set(await initializer.getEncodedKey(), initializer);
+		// compute the key from the new initializer before it replaces the global, not after
+		let encodedKey = await initializer.getEncodedKey();
+		Initializer.LOCAL.set(encodedKey, initializer);
 		Initializer.initializer = initializer;
 		Logger.info(Constants.INITIALIZATION_SWITCHED.concat(await Initializer.initializer.toString()))
 	}
@@ -189,11 +190,10 @@ export class Initializer {
 	}
 
 	static async removeUserConfiguration(token: OAuthToken) {
-		let initializer = new Initializer();
 		let oauthtoken = Initializer.initializer.getToken();
 		if (token instanceof OAuthToken && oauthtoken instanceof OAuthToken) {
 			if (token.getId() == oauthtoken.getId()) {
-				let key = await initializer.getEncodedKey();
+				let key = await Initializer.initializer.getEncodedKey();
 				if (Initializer.LOCAL.has(key)) {
 					Initializer.LOCAL.delete(key);
 				}
@@ -207,8 +207,7 @@ export class Initializer {
 	}
 
 	public async getEncodedKey() : Promise<string>{
-		let initializer = Initializer.initializer;
-		let token = initializer.getToken();
+		let token = this.getToken();
 		let key : string = "";
 		if (token instanceof OAuthToken) {
 			let oauthToken = token;
@@ -227,7 +226,7 @@ export class Initializer {
 				}
 			}
 		}
-		let tokenKey : string = Initializer.initializer.getEnvironment().getUrl();
+		let tokenKey : string = this.getEnvironment().getUrl();
 		if (key != null && key.length > 0) {
 			tokenKey = tokenKey + key;
 		}
@@ -235,7 +234,7 @@ export class Initializer {
 	}
 
 	private async toString() {
-		return (Constants.IN_ENVIRONMENT).concat((await Initializer.initializer)._environment.getUrl()).concat(".");
+		return (Constants.IN_ENVIRONMENT).concat((await Initializer.getInitializer()).getEnvironment().getUrl()).concat(".");
 	}
 
 	toUTF8Array(str: string) {
